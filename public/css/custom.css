@@ -1,0 +1,188 @@
+/* 1. Theme Colors: Tosca Green and Blue */
+:root {
+  --tosca-primary: #12b8a6; /* Hijau Tosca */
+  --blue-secondary: #004d80; /* Blue based on logo */
+  --tosca-hover: #0ca494;
+  --bg-color: #f6f9fc;
+}
+
+/* Override body and general colors */
+body {
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--tosca-primary);
+}
+a:hover {
+  color: var(--tosca-hover);
+}
+
+.logo span {
+  color: var(--blue-secondary);
+}
+
+/* Header Adjustments */
+.header {
+  border-bottom: 2px solid var(--tosca-primary);
+}
+.header .toggle-sidebar-btn {
+  color: var(--tosca-primary);
+}
+
+/* Logo size in header */
+.logo img {
+  max-height: 45px; /* Increased from 26px */
+  margin-right: 10px;
+}
+
+/* 2. Sidebar Customization - Slim By Default */
+/* Base Sidebar width is now 70px by default */
+@media (min-width: 1200px) {
+  .sidebar {
+    width: 70px;
+    transition: all 0.3s;
+    overflow-x: hidden;
+    padding: 20px 10px;
+  }
+
+  #main,
+  #footer {
+    margin-left: 70px;
+  }
+
+  /* Hide texts and arrow down initially */
+  .sidebar-nav .nav-heading,
+  .sidebar-nav .nav-link span,
+  .sidebar-nav .nav-link .bi-chevron-down {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    display: none;
+  }
+
+  /* Center the icons when slim */
+  .sidebar-nav .nav-link i {
+    font-size: 20px;
+    margin: 0 auto;
+  }
+
+  /* Make sure link behaves as centered block when slim */
+  .sidebar-nav .nav-link {
+    justify-content: center;
+    padding: 10px;
+    text-align: left;
+  }
+
+  /* Hide sub-menus when slim */
+  .sidebar-nav .nav-content {
+    display: none !important;
+  }
+
+  /* --- When sidebar is toggled OPEN or HOVERED (.toggle-sidebar means OPEN in our logic) --- */
+  body.toggle-sidebar .sidebar,
+  body:not(.toggle-sidebar) .sidebar:hover {
+    width: 300px;
+    padding: 20px;
+    left: 0 !important; /* Prevent NiceAdmin from hiding the sidebar */
+  }
+
+  body.toggle-sidebar #main,
+  body.toggle-sidebar #footer {
+    margin-left: 300px !important;
+  }
+
+  body.toggle-sidebar .sidebar-nav .nav-heading,
+  body:not(.toggle-sidebar) .sidebar:hover .sidebar-nav .nav-heading {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    width: auto;
+  }
+
+  body.toggle-sidebar .sidebar-nav .nav-link span,
+  body:not(.toggle-sidebar) .sidebar:hover .sidebar-nav .nav-link span,
+  body.toggle-sidebar .sidebar-nav .nav-link .bi-chevron-down,
+  body:not(.toggle-sidebar) .sidebar:hover .sidebar-nav .nav-link .bi-chevron-down {
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    display: block;
+  }
+
+  body.toggle-sidebar .sidebar-nav .nav-link,
+  body:not(.toggle-sidebar) .sidebar:hover .sidebar-nav .nav-link {
+    justify-content: flex-start;
+  }
+
+  body.toggle-sidebar .sidebar-nav .nav-link i,
+  body:not(.toggle-sidebar) .sidebar:hover .sidebar-nav .nav-link i {
+    margin-right: 15px;
+    margin-left: 0;
+  }
+
+  /* Restore submenus if supposed to be visible (e.g. active) */
+  body.toggle-sidebar .sidebar-nav .nav-content.collapse.show,
+  body:not(.toggle-sidebar) .sidebar:hover .sidebar-nav .nav-content.collapse.show {
+    display: block !important;
+  }
+}
+
+/* Custom arrow styling inside sidebar */
+.custom-toggle-arrow {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--tosca-primary);
+  z-index: 20;
+  display: none !important; /* Hidden on slim */
+  padding: 10px 15px;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  line-height: 1;
+}
+
+.custom-toggle-arrow:hover {
+  background-color: var(--tosca-primary);
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(18, 184, 166, 0.2);
+}
+
+/* Show only when sidebar is expanded */
+body.toggle-sidebar .custom-toggle-arrow,
+body:not(.toggle-sidebar) .sidebar:hover .custom-toggle-arrow {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Toggle Sidebar on mobile - NiceAdmin default uses left: -300px */
+@media (max-width: 1199px) {
+  .logo img {
+    max-height: 35px;
+  }
+  .sidebar {
+    width: 300px;
+  }
+}
+
+/* Fix sidebar active links to match Theme */
+.sidebar-nav .nav-link:hover {
+  background: rgba(18, 184, 166, 0.1);
+  color: var(--tosca-primary);
+}
+.sidebar-nav .nav-link:hover i {
+  color: var(--tosca-primary);
+}
+.sidebar-nav .nav-link:not(.collapsed) {
+  background: rgba(18, 184, 166, 0.1);
+  color: var(--tosca-primary);
+}
+.sidebar-nav .nav-link:not(.collapsed) i {
+  color: var(--tosca-primary);
+}

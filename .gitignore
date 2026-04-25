@@ -1,0 +1,55 @@
+# CodeIgniter 4 defaults
+/vendor/
+/node_modules/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Writable directories (keep structure but ignore runtime data)
+/writable/cache/*
+!/writable/cache/index.html
+!/writable/cache/.htaccess
+
+/writable/logs/*
+!/writable/logs/index.html
+!/writable/logs/.htaccess
+
+/writable/session/*
+!/writable/session/index.html
+!/writable/session/.htaccess
+
+/writable/debugbar/*
+
+/writable/uploads/*
+!/writable/uploads/index.html
+!/writable/uploads/.htaccess
+
+# JSON data (project storage) - ignore runtime data, keep empty templates
+/writable/data/*.json
+
+# User uploads (gambar detail tutorial)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# PHP
+php_errors.log
+
+# Build
+/builds/
+
+# Local tooling
+/.code-review-graph/
+/.claude/
